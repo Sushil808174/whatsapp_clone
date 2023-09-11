@@ -32,10 +32,12 @@ public class Chat {
 	
 	@Column(name="is_group")
 	private boolean isGroup;
-	
-	@Column(name="create_by")
+
+	@ManyToMany
+	private Set<Users> admins = new HashSet<>();
+
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="user_id") // This defines the foreign key column
 	private Users createdBy;
 	
 	@ManyToMany

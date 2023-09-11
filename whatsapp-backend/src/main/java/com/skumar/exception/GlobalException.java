@@ -21,6 +21,14 @@ public class GlobalException {
 		err.setDescription(req.getDescription(false));
 		return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
 	}
+	@ExceptionHandler(ChatException.class)
+	public ResponseEntity<ErrorDetails> chatExceptionHandler(ChatException exp, WebRequest req){
+		ErrorDetails err = new ErrorDetails();
+		err.setMessage(exp.getMessage());
+		err.setLocalDate(LocalDate.now());
+		err.setDescription(req.getDescription(false));
+		return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
+	}
 	
 	
 	@ExceptionHandler(MessageException.class)
